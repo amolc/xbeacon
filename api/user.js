@@ -75,7 +75,7 @@ router.post('/add_device', function( req, res ) {
 });
 
 /**
-* Defined the representatives Details post call route here
+* Defined the getallusers Details post call route here
 * @author ankush [ankush.lomte@fountaintechies.com]
 * @since   1
 * @Version 1
@@ -85,6 +85,35 @@ router.get('/getallusers', function( req, res ) {
   console.log("in get all users  api");
   console.log(req.body);
   connection.query( "SELECT * FROM user" , function( error , result ){
+      console.log(error);
+      console.log(result);
+      if(result ){
+        responsedata = {
+              status: true,
+              record : result,
+          }
+      } else {
+        responsedata = {
+              status: false,
+              message:'Insert Failed.'
+          }
+      }
+      res.jsonp( responsedata );
+
+    });
+});
+
+/**
+* Defined the getallDevices get call route here
+* @author ankush [ankush.lomte@fountaintechies.com]
+* @since   1
+* @Version 1
+* @summary This api allow to get Details of representative.
+*/
+router.get('/getalldevices', function( req, res ) {
+  console.log("in get all devices  api");
+  console.log(req.body);
+  connection.query( "SELECT * FROM devices" , function( error , result ){
       console.log(error);
       console.log(result);
       if(result ){

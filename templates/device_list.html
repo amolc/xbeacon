@@ -56,11 +56,11 @@
                         <th style=" border-bottom:none;">Email <span class="down"><i class="fa fa-angle-down"></i></span></a></th>
 
                        </thead>
-                      <tbody data-ng-repeat="beconuser in beconusers" >
-                        <tr id="{{beconuser.beconuser_id}}">
-                          <td><input type="checkbox" ng-model="beconuser.checked" class="checkthis" /></td>
-                          <td> {{beconuser.user_id}}</td>
-                          <td>{{beconuser.email_id}}</td>
+                      <tbody data-ng-repeat="device in devices" >
+                        <tr id="{{device.device_id}}">
+                          <td><input type="checkbox" ng-model="device.checked" class="checkthis" /></td>
+                          <td> {{device.user_id}}</td>
+                          <td>{{device.email_id}}</td>
                         </tr>
                       </tbody>
                     </table>

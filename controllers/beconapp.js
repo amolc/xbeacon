@@ -25,7 +25,7 @@ xbeaconAppModule.config( function($urlRouterProvider, $stateProvider) {
     .state('device_list',{
         url:'/device_list',
         templateUrl:'templates/device_list.html',
-        controller: 'deviceController'
+        controller: 'deviceManager'
     })
 
     $urlRouterProvider.otherwise('/appbecon_user_list');
