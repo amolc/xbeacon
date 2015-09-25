@@ -9,13 +9,16 @@
   "author": "fountaintechies",
   "license": "ISC",
   "dependencies": {
+    "angular": "^1.5.0-beta.0",
     "body-parser": "^1.13.3",
+    "bootstrap": "^3.3.5",
     "bower": "^1.5.1",
     "express": "^4.13.3",
     "mime-types": "^2.1.5",
     "morgan": "^1.6.1",
     "mysql": "^2.9.0",
-    "mysql-crud": "^0.1.4"
+    "mysql-crud": "^0.1.4",
+    "ui-router": "0.0.1"
   },
   "devDependencies": {
     "grunt": "^0.4.5",

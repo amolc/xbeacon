@@ -12,13 +12,13 @@
     <title>Xcellen BeconDemo</title>
 
     <!-- Bootstrap Core CSS -->
-    <link href="../public/assets/css/bootstrap.min.css" rel="stylesheet">
+    <link href="node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/0.9.4/angular-material.min.css">
     <link href='https://fonts.googleapis.com/css?family=Hind|Open+Sans' rel='stylesheet' type='text/css'>
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
     <!-- Custom CSS -->
-    <link href="../public/assets/css/style.css" rel="stylesheet">
+    <link href="assets/css/style.css" rel="stylesheet">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -27,8 +27,9 @@
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
      <!-- Angular Libraries -->
-    <script type="text/javascript" src="../public/lib/angular/angular.js"></script>
-    <script type="text/javascript" src="../public/lib/angular-ui-router/release/angular-ui-router.js"></script>
+    <script type="text/javascript" src="node_modules/angular/angular.js"></script>
+    <script type="text/javascript" src="node_modules/ui-router/angular-ui-router.js"></script>
+
 
 </head>
 
@@ -41,8 +42,8 @@
 <div ui-view></div>
 
     <!-- Controllers Libraries -->
-    <script type="text/javascript" src="beconapp.js"></script>
-    <script type="text/javascript" src="deviceController.js"></script>
+    <script type="text/javascript" src="controllers/beconapp.js"></script>
+    <script type="text/javascript" src="controllers/deviceController.js"></script>
 </body>
 
 </html>

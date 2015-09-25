@@ -6,7 +6,7 @@ var router = express.Router();
 var app         = express();
 var bodyParser  = require('body-parser');
 var morgan      = require('morgan');
-    
+
 // =======================
 // configuration =========
 // =======================
@@ -18,6 +18,7 @@ app.use(bodyParser.json());
 
 // use morgan to log requests to the console
 app.use(morgan('dev'));
+app.use('/', express.static(__dirname + '/'));
 app.use('/lib', express.static(__dirname + '/lib'));
 
 
