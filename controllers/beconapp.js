@@ -2,17 +2,17 @@
 'use strict';
 
 // Set the main application name
-var mainApplicationModuleName = 'beacon';
+var xbeaconApp = 'beacon';
 
 var baseUrl = "http://node.fountaintechies.com:8001/api";
 // Create the main application
-var xbeaconApp = angular.module('beacon', ['ui.router']);
+var xbeaconAppModule = angular.module( xbeaconApp , ['ui.router']);
 
-xbeaconApp.run(function($rootScope, $state ) {
+xbeaconAppModule.run(function($rootScope, $state ) {
 
 });
 
-xbeaconApp.config( function($urlRouterProvider, $stateProvider) {
+xbeaconAppModule.config( function($urlRouterProvider, $stateProvider) {
 
     $stateProvider
 
@@ -31,6 +31,6 @@ xbeaconApp.config( function($urlRouterProvider, $stateProvider) {
     $urlRouterProvider.otherwise('/appbecon_user_list');
 });
 
-xbeaconApp.controller('MainController', function($scope, $cookieStore, $http, $stateParams, $location, $rootScope, $state) {
+xbeaconAppModule.controller('MainController', function($scope, $cookieStore, $http, $stateParams, $location, $rootScope, $state) {
         console.log("In main Becon controller");
     });
