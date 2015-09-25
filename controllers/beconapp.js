@@ -2,7 +2,7 @@
 'use strict';
 
 // Set the main application name
-var mainApplicationModuleName = 'becon';
+var mainApplicationModuleName = 'beacon';
 
 // Create the main application
 var mainApplicationModule = angular.module(mainApplicationModuleName, ['ui.router']);
@@ -18,8 +18,8 @@ mainApplicationModule.config(['$urlRouterProvider', '$stateProvider', function($
     
     .state('becon_user_list',{
         url:'/becon_user_list',
-        authRequired : false,
-        templateUrl:'templates/becon_user_list.html'
+        templateUrl:'templates/becon_user_list.html',
+        controller: 'deviceController'
     });
     
     $urlRouterProvider.otherwise('/appbecon_user_list');
