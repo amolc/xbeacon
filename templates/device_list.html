@@ -52,15 +52,18 @@
                     <table id="mytable" class="table table-curved">
                        <thead>
                           <th style=" border-bottom:none;"><input type="checkbox" class="checkthis" /></th>
-                        <th style=" border-bottom:none;">ID <span class="down"><i class="fa fa-angle-down"></i></span></a></th>
-                        <th style=" border-bottom:none;">Email <span class="down"><i class="fa fa-angle-down"></i></span></a></th>
-
+                        <th style=" border-bottom:none;">Device ID <span class="down"><i class="fa fa-angle-down"></i></span></a></th>
+                        <th style=" border-bottom:none;">Major <span class="down"><i class="fa fa-angle-down"></i></span></a></th>
+                        <th style=" border-bottom:none;">Minor <span class="down"><i class="fa fa-angle-down"></i></span></a></th>
+                        <th style=" border-bottom:none;">Doctor <span class="down"><i class="fa fa-angle-down"></i></span></a></th>
                        </thead>
                       <tbody data-ng-repeat="device in devices" >
                         <tr id="{{device.device_id}}">
                           <td><input type="checkbox" ng-model="device.checked" class="checkthis" /></td>
-                          <td> {{device.user_id}}</td>
-                          <td>{{device.email_id}}</td>
+                          <td> {{device.device_id}}</td>
+                          <td> {{device.major}}</td>
+                          <td> {{device.minor}}</td>
+                          <td>{{device.physician_name}}</td>
                         </tr>
                       </tbody>
                     </table>
