@@ -10,7 +10,7 @@ angular.module(mainApplicationModuleName).controller('deviceController',
           */
           console.log("Heloooo");
           $scope.findAll = function() { 
-            $http.get(baseUrl + '/beaconapi/getallusers').success(function(res, req){
+            $http.get(baseUrl + '/user/getallusers').success(function(res, req){
               console.log("in beconusers list");
               //console.log(res);
               $scope.beconusers = res.record;
