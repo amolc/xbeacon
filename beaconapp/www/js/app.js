@@ -20,7 +20,6 @@ angular.module('starter', ['ionic', 'starter.controllers'])
       StatusBar.styleDefault();
     }
 
-
    if( window.cordova && cordova.plugins.locationManager ){
 
    var logToDom = function (message) {
