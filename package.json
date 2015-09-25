@@ -1,0 +1,45 @@
+{
+  "name": "xbeacon",
+  "version": "1.0.0",
+  "description": "Excellen Project",
+  "main": "beaconserver.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "fountaintechies",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.13.3",
+    "bower": "^1.5.1",
+    "express": "^4.13.3",
+    "mime-types": "^2.1.5",
+    "morgan": "^1.6.1",
+    "mysql": "^2.9.0",
+    "mysql-crud": "^0.1.4"
+  },
+  "devDependencies": {
+    "grunt": "^0.4.5",
+    "grunt-bower-task": "^0.4.0",
+    "grunt-bump": "^0.3.2",
+    "grunt-cli": "^0.1.13",
+    "grunt-contrib-clean": "^0.6.0",
+    "grunt-contrib-compress": "^0.13.0",
+    "grunt-contrib-concat": "^0.5.1",
+    "grunt-contrib-connect": "^0.11.2",
+    "grunt-contrib-jshint": "^0.11.2",
+    "grunt-contrib-uglify": "^0.9.1",
+    "grunt-contrib-watch": "^0.6.1",
+    "grunt-exec": "^0.4.6",
+    "grunt-git": "^0.3.5",
+    "grunt-html2js": "^0.3.4",
+    "grunt-karma": "^0.12.0",
+    "jasmine-core": "^2.3.4",
+    "karma": "^0.13.9",
+    "karma-jasmine": "^0.3.6",
+    "karma-ng-html2js-preprocessor": "^0.1.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:amolc/xbeacon.git"
+  }
+}
