@@ -20,6 +20,9 @@ app.use(bodyParser.json());
 app.use(morgan('dev'));
 app.use('/', express.static(__dirname + '/'));
 app.use('/lib', express.static(__dirname + '/lib'));
+app.use('/templates', express.static(__dirname + '/templates'));
+app.use('/controllers', express.static(__dirname + '/controllers'));
+
 
 
 
