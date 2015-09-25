@@ -26,6 +26,8 @@ angular.module(xbeaconApp).controller('deviceController',
             });
           };
 
+          $scope.findAll();
+
 
     }
 );
