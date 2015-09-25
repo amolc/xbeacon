@@ -14,19 +14,15 @@ mainApplicationModule
 
 mainApplicationModule.config(['$urlRouterProvider', '$stateProvider', function($urlRouterProvider, $stateProvider) {
 
-    $urlRouterProvider.otherwise('/signin');
-
     $stateProvider
-    .state('home', {
-        url: '/home',
-        templateUrl: 'becon_user_list.html'
-    })
-
+    
     .state('becon_user_list',{
         url:'/becon_user_list',
         authRequired : false,
         templateUrl:'templates/becon_user_list.html'
     });
+    
+    $urlRouterProvider.otherwise('/appbecon_user_list');
 }]);
 
 angular.module(mainApplicationModuleName).controller('MainController', [
@@ -37,5 +33,5 @@ angular.module(mainApplicationModuleName).controller('MainController', [
     '$rootScope',
     '$state',    
     function($scope, $cookieStore, $http, $stateParams, $location, $rootScope, $state) {
-    	console.log("In main Becon controller");
+        console.log("In main Becon controller");
     }]);
