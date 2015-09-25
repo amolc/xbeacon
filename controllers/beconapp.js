@@ -6,33 +6,31 @@ var mainApplicationModuleName = 'beacon';
 
 var baseUrl = "http://node.fountaintechies.com:8001/api";
 // Create the main application
-var mainApplicationModule = angular.module(mainApplicationModuleName, ['ui.router']);
+var xbeaconApp = angular.module('beacon', ['ui.router']);
 
-mainApplicationModule
-.run(function($rootScope, $state ) {
+xbeaconApp.run(function($rootScope, $state ) {
 
 });
 
-mainApplicationModule.config(['$urlRouterProvider', '$stateProvider', function($urlRouterProvider, $stateProvider) {
+xbeaconApp.config( function($urlRouterProvider, $stateProvider) {
 
     $stateProvider
-    
+
     .state('becon_user_list',{
         url:'/becon_user_list',
-        templateUrl:'./../templates/becon_user_list.html',
+        templateUrl:'templates/becon_user_list.html',
         controller: 'deviceController'
-    });
-    
-    $urlRouterProvider.otherwise('/appbecon_user_list');
-}]);
+    })
 
-angular.module(mainApplicationModuleName).controller('MainController', [
-    '$scope',
-    '$http',
-    '$stateParams', 
-    '$location', 
-    '$rootScope',
-    '$state',    
-    function($scope, $cookieStore, $http, $stateParams, $location, $rootScope, $state) {
+    .state('device_list',{
+        url:'/device_list',
+        templateUrl:'templates/becon_user_list.html',
+        controller: 'deviceController'
+    })
+
+    $urlRouterProvider.otherwise('/appbecon_user_list');
+});
+
+xbeaconApp.controller('MainController', function($scope, $cookieStore, $http, $stateParams, $location, $rootScope, $state) {
         console.log("In main Becon controller");
-    }]);
+    });
