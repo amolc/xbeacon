@@ -18,8 +18,7 @@ app.use(bodyParser.json());
 
 // use morgan to log requests to the console
 app.use(morgan('dev'));
-app.use('/', express.static(__dirname + '/beaconadmin'));
-app.use('/public', express.static(__dirname + '/public'));
+app.use('/lib', express.static(__dirname + '/lib'));
 
 
 
@@ -31,8 +30,8 @@ app.all('*', function(req, res, next) {
   next();
  });
 
-var beaconapis = require('./app/beaconapi');
-app.use('/app/beaconapi', beaconapis);
+var beaconapis = require('./api/beaconapi');
+app.use('/api/beaconapi', beaconapis);
 
 
 
