@@ -31,8 +31,8 @@ app.all('*', function(req, res, next) {
   next();
  });
 
-var beaconapis = require('./api/beaconapi');
-app.use('/api/beaconapi', beaconapis);
+var user = require('./api/user');
+app.use('/api/user', user);
 
 
 
