@@ -16,7 +16,6 @@ mainApplicationModule.config(['$urlRouterProvider', '$stateProvider', function($
 
     $stateProvider
     
-
     .state('becon_user_list',{
         url:'/becon_user_list',
         authRequired : false,
