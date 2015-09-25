@@ -18,7 +18,7 @@ mainApplicationModule.config(['$urlRouterProvider', '$stateProvider', function($
     
     .state('becon_user_list',{
         url:'/becon_user_list',
-        templateUrl:'templates/becon_user_list.html',
+        templateUrl:'../templates/becon_user_list.html',
         controller: 'deviceController'
     });
     

@@ -1,5 +1,5 @@
 angular.module(mainApplicationModuleName).controller('deviceController',
-    function($rootScope, $cookieStore, $scope, $stateParams, $location, $http, $state, $timeout) {
+    function($rootScope, $scope, $stateParams, $location, $http, $state, $timeout) {
              
           /**
           @function findAll 
@@ -9,8 +9,8 @@ angular.module(mainApplicationModuleName).controller('deviceController',
           @lastDate   
           */
           console.log("Heloooo");
-         /* $scope.findAll = function() { 
-            $http.get('http://localhost:8001/app/beaconapi/getallusers').success(function(res, req){
+          $scope.findAll = function() { 
+            $http.get('http://localhost:8001/api/beaconapi/getallusers').success(function(res, req){
               console.log("in beconusers list");
               //console.log(res);
               $scope.beconusers = res.record;
@@ -24,7 +24,7 @@ angular.module(mainApplicationModuleName).controller('deviceController',
             }).error(function() {
               console.log("Connection Problem.");
             });
-          };      */
+          };      
 
                      
     }

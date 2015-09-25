@@ -1,6 +1,6 @@
 <div >
   <h1>Hellllllllloooooooooooo</h1>
-  <!-- <div class="header_title_back">
+  <div class="header_title_back">
     <div class="container">
        <div class="row">
            <div class="col-lg-12">
@@ -56,11 +56,11 @@
                         <th style=" border-bottom:none;">Email <span class="down"><i class="fa fa-angle-down"></i></span></a></th>
                         
                        </thead>
-                      <tbody data-ng-repeat="beconuser in beconusers | filter : full_name || territory_name || team_id" >
+                      <tbody data-ng-repeat="beconuser in beconusers" >
                         <tr id="{{beconuser.beconuser_id}}">
                           <td><input type="checkbox" ng-model="beconuser.checked" class="checkthis" /></td>
-                          <td> 11{{beconuser.beconuser_number}}</td>
-                          <td>ankush@gmail.com{{beconuser.full_name}}</td>                         
+                          <td> {{beconuser.user_id}}</td>
+                          <td>{{beconuser.email_id}}</td>                         
                         </tr>
                       </tbody>
                     </table>
@@ -75,6 +75,6 @@
         </div>
       </div>
    
-    </section> -->
+    </section>
     
 </div>
