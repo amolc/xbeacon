@@ -21,6 +21,8 @@ mainApplicationModule.config(['$urlRouterProvider', '$stateProvider', function($
         authRequired : false,
         templateUrl:'templates/becon_user_list.html'
     });
+    
+    $stateProvider.otherwise('/appbecon_user_list');
 }]);
 
 angular.module(mainApplicationModuleName).controller('MainController', [
