@@ -4,6 +4,7 @@
 // Set the main application name
 var mainApplicationModuleName = 'beacon';
 
+var baseUrl = "http://node.fountaintechies.com:8001/api";
 // Create the main application
 var mainApplicationModule = angular.module(mainApplicationModuleName, ['ui.router']);
 
