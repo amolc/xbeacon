@@ -20,18 +20,40 @@ angular.module('starter', ['ionic', 'starter.controllers'])
      StatusBar.styleDefault();
    }
 
-   alert( cordova.plugins.locationManager);
+
   if( window.cordova && cordova.plugins.locationManager ){
     alert('5:27');
     var logToDom = function (message) {
       var e = document.createElement('label');
       e.innerText = message;
-
+      console.log( message );
       var br = document.createElement('br');
       var br2 = document.createElement('br');
       document.getElementById("listbbbbbbb").appendChild(e);
       document.getElementById("listbbbbbbb").appendChild(br);
       document.getElementById("listbbbbbbb").appendChild(br2);
+
+      var beacon = {
+        'beacon_uuid' : message.uuid,
+        'beacon_proximity' : message.proximity,
+        'beacon_tx' : message.tx,
+        'beacon_accuracy' : message.accuracy,
+        'beacon_accuracy' : message.accuracy,
+        'user_identifier' : message.identifier
+      }
+      $http.post(baseURL + 'insertbeaconnote', beacon).success(function(res, req) {
+        if( res.errcode > 0 ){
+          if( 'ProximityFar' == message.proximity ){
+              navigator.notification.alert("Welcome to 7-16 Popety", function(buttonIndex) {}, "Popety", 'OK');
+              navigator.notification.beep(1);
+              window.localStorage.setItem("beconnotification1", false );
+
+          } else if( 'ProximityNear' == message.proximity || 'ProximityImmediate' == message.proximity ){
+              navigator.notification.alert("07-16 Unit is added into your favorite", function(buttonIndex) {}, "Popety", 'OK');
+              navigator.notification.beep(1);
+              window.localStorage.setItem("beconnotification2", false );
+          }
+        }
 
      };
 
@@ -52,7 +74,10 @@ angular.module('starter', ['ionic', 'starter.controllers'])
      };
 
      delegate.didRangeBeaconsInRegion = function (pluginResult) {
-         logToDom('[DOM] didRangeBeaconsInRegion: ' + JSON.stringify(pluginResult));
+         //logToDom('[DOM] didRangeBeaconsInRegion: ' + JSON.stringify(pluginResult));
+         if( pluginResult.beacons.length > 0 ){
+           logToDom(  pluginResult.beacons[0] );
+         }
      };
 
 
@@ -69,7 +94,7 @@ angular.module('starter', ['ionic', 'starter.controllers'])
      cordova.plugins.locationManager.requestWhenInUseAuthorization();
      // or cordova.plugins.locationManager.requestAlwaysAuthorization()
 
-     cordova.plugins.locationManager.startMonitoringForRegion(beaconRegion)
+     cordova.plugins.locationManager.startRangingBeaconsInRegion(beaconRegion)
          .fail(console.error)
          .done();
 
