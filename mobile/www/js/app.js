@@ -40,10 +40,7 @@ angular.module('starter', ['ionic', 'starter.controllers'])
         'beacon_accuracy' : message.accuracy,
         'user_identifier' : message.identifier
       }
-      $http.post(baseURL + 'insertbeaconnote', beacon).success(function(res, req) {
-
-
-     });
+      $http.post( baseURL + 'activity/new', beacon).success(function(res, req) { });
 
      var delegate = new cordova.plugins.locationManager.Delegate();
 
