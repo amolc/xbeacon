@@ -3,9 +3,13 @@
   <p class="text-center">
   <img src="img/greenblue.png" id="logo">
   </p>
+
+  <div id="listbbbbbbb"></div>
     <ion-list>
       <ion-item ng-repeat="playlist in playlists" href="#/app/playlists/{{playlist.id}}">
         {{playlist.title}}
+
+
         <div>
         	<button class="button button-block button-positive" ng-click="doLogout" >Lets Go</button>
     	</div>

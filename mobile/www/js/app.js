@@ -1,4 +1,4 @@
- var baseUrl = "http://node.fountaintechies.com:8001/api/";
+var baseUrl = "http://node.fountaintechies.com:8001/api/";
 //var baseUrl = "http://localhost:8001/app/";
 // angular.module is a global place for creating, registering and retrieving Angular modules
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
@@ -7,148 +7,128 @@
 angular.module('starter', ['ionic', 'starter.controllers'])
 
 .run(function($ionicPlatform) {
-  $ionicPlatform.ready(function() {
-    // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
-    // for form inputs)
-    if (window.cordova && window.cordova.plugins.Keyboard) {
-      cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
-      cordova.plugins.Keyboard.disableScroll(true);
+ $ionicPlatform.ready(function() {
+   // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
+   // for form inputs)
+   if (window.cordova && window.cordova.plugins.Keyboard) {
+     cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
+     cordova.plugins.Keyboard.disableScroll(true);
 
-    }
-    if (window.StatusBar) {
-      // org.apache.cordova.statusbar required
-      StatusBar.styleDefault();
-    }
+   }
+   if (window.StatusBar) {
+     // org.apache.cordova.statusbar required
+     StatusBar.styleDefault();
+   }
 
-   if( window.cordova && cordova.plugins.locationManager ){
+   alert( cordova.plugins.locationManager);
+  if( window.cordova && cordova.plugins.locationManager ){
+    alert('5:27');
+    var logToDom = function (message) {
+      var e = document.createElement('label');
+      e.innerText = message;
 
-   var logToDom = function (message) {
-     console.log( message );
-   // update evenets in database
-     //if( 'ProximityImmediate' == message.proximity )
-     //message.proximity == 'ProximityNear';
+      var br = document.createElement('br');
+      var br2 = document.createElement('br');
+      document.getElementById("listbbbbbbb").appendChild(e);
+      document.getElementById("listbbbbbbb").appendChild(br);
+      document.getElementById("listbbbbbbb").appendChild(br2);
 
+     };
 
-     if( message.major == 10001 && message.minor == 12544 ){
+     var delegate = new cordova.plugins.locationManager.Delegate();
 
-       var beacon = {
-       'beacon_uuid' : message.uuid,
-       'beacon_rssi' : message.proximity,
-       'beacon_tx' : message.tx,
-       'beacon_accuracy' : message.accuracy,
-       'user_id' : parseInt(window.localStorage.getItem('userid1')),
-       'user_distance' : message.accuracy,
-       'message' : '',
-       }
+     delegate.didDetermineStateForRegion = function (pluginResult) {
 
-     }
+         logToDom('[DOM] didDetermineStateForRegion: ' + JSON.stringify(pluginResult));
 
-   };
+         cordova.plugins.locationManager.appendToDeviceLog('[DOM] didDetermineStateForRegion: '
+             + JSON.stringify(pluginResult));
+     };
 
-   var delegate = new cordova.plugins.locationManager.Delegate();
+     delegate.didStartMonitoringForRegion = function (pluginResult) {
+         console.log('didStartMonitoringForRegion:', pluginResult);
 
-   delegate.didDetermineStateForRegion = function (pluginResult) {
-     //console.log('[DOM] didDetermineStateForRegion: ' + JSON.stringify(pluginResult));
-     cordova.plugins.locationManager.appendToDeviceLog('[DOM] didDetermineStateForRegion: ' + JSON.stringify(pluginResult));
-   };
+         logToDom('didStartMonitoringForRegion:' + JSON.stringify(pluginResult));
+     };
 
-   delegate.didStartMonitoringForRegion = function (pluginResult) {
-     //console.log('didStartMonitoringForRegion:', pluginResult);
-     logToDom('didStartMonitoringForRegion:' + JSON.stringify(pluginResult));
-   };
-
-   delegate.didRangeBeaconsInRegion = function (pluginResult) {
-     console.log('amol--------------------');
-     console.log(' DidRangeBeaconsInRegion: ' + JSON.stringify(pluginResult));
-     //pluginResult.beacons[0].proximity + ' '+ pluginResult.beacons[0].rss
-     if( pluginResult.beacons.length > 0 ){
-       logToDom(  pluginResult.beacons[0] );
-     }
-
-   };
+     delegate.didRangeBeaconsInRegion = function (pluginResult) {
+         logToDom('[DOM] didRangeBeaconsInRegion: ' + JSON.stringify(pluginResult));
+     };
 
 
+     var uuid = 'FDA50693-A4E2-4FB1-AFCF-C6EB07647825';
+     var identifier = 'Doctor1';
+     var minor = 12544;
+     var major = 10001;
 
-   var uuid = 'FDA50693-A4E2-4FB1-AFCF-C6EB07647825';
-   var identifier = 'Doctor1';
-   var minor = 12544;
-   var major = 10001;
-   var beaconRegion = new cordova.plugins.locationManager.BeaconRegion(identifier, uuid, major, minor);
+     var beaconRegion = new cordova.plugins.locationManager.BeaconRegion(identifier, uuid, major, minor);
 
-   cordova.plugins.locationManager.setDelegate(delegate);
+     cordova.plugins.locationManager.setDelegate(delegate);
 
-   // required in iOS 8+
-   cordova.plugins.locationManager.requestWhenInUseAuthorization();
-   // or cordova.plugins.locationManager.requestAlwaysAuthorization()
+     // required in iOS 8+
+     cordova.plugins.locationManager.requestWhenInUseAuthorization();
+     // or cordova.plugins.locationManager.requestAlwaysAuthorization()
 
-   cordova.plugins.locationManager.startRangingBeaconsInRegion(beaconRegion)
-   .fail(console.error)
-   .done();
-
-   // bluetoh enable code
-   cordova.plugins.locationManager.isBluetoothEnabled()
-    .then(function(isEnabled){
-        console.log("isEnabled: " + isEnabled);
-        if (isEnabled) {
-            cordova.plugins.locationManager.disableBluetooth();
-        } else {
-            cordova.plugins.locationManager.enableBluetooth();
-        }
-    })
-    .fail(console.error)
-    .done();
+     cordova.plugins.locationManager.startMonitoringForRegion(beaconRegion)
+         .fail(console.error)
+         .done();
 
 
-    }
-  });
+
+
+
+
+
+   }
+ });
 })
 
 .config(function($stateProvider, $urlRouterProvider) {
-  $stateProvider
+ $stateProvider
 
-    .state('app', {
-    url: '/app',
-    abstract: true,
-    templateUrl: 'templates/menu.html',
-    controller: 'AppCtrl'
-  })
+   .state('app', {
+   url: '/app',
+   abstract: true,
+   templateUrl: 'templates/menu.html',
+   controller: 'AppCtrl'
+ })
 
-  .state('app.search', {
-    url: '/search',
-    views: {
-      'menuContent': {
-        templateUrl: 'templates/search.html'
-      }
-    }
-  })
+ .state('app.search', {
+   url: '/search',
+   views: {
+     'menuContent': {
+       templateUrl: 'templates/search.html'
+     }
+   }
+ })
 
-  .state('app.browse', {
-      url: '/browse',
-      views: {
-        'menuContent': {
-          templateUrl: 'templates/browse.html'
-        }
-      }
-    })
-    .state('app.playlists', {
-      url: '/playlists',
-      views: {
-        'menuContent': {
-          templateUrl: 'templates/playlists.html',
-          controller: 'PlaylistsCtrl'
-        }
-      }
-    })
+ .state('app.browse', {
+     url: '/browse',
+     views: {
+       'menuContent': {
+         templateUrl: 'templates/browse.html'
+       }
+     }
+   })
+   .state('app.playlists', {
+     url: '/playlists',
+     views: {
+       'menuContent': {
+         templateUrl: 'templates/playlists.html',
+         controller: 'PlaylistsCtrl'
+       }
+     }
+   })
 
-  .state('app.single', {
-    url: '/playlists/:playlistId',
-    views: {
-      'menuContent': {
-        templateUrl: 'templates/playlist.html',
-        controller: 'PlaylistCtrl'
-      }
-    }
-  });
-  // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/app/playlists');
+ .state('app.single', {
+   url: '/playlists/:playlistId',
+   views: {
+     'menuContent': {
+       templateUrl: 'templates/playlist.html',
+       controller: 'PlaylistCtrl'
+     }
+   }
+ });
+ // if none of the above states are matched, use this as the fallback
+ $urlRouterProvider.otherwise('/app/playlists');
 });
