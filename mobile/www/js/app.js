@@ -38,7 +38,6 @@ angular.module('starter', ['ionic', 'starter.controllers'])
         'beacon_proximity' : message.proximity,
         'beacon_tx' : message.tx,
         'beacon_accuracy' : message.accuracy,
-        'beacon_accuracy' : message.accuracy,
         'user_identifier' : message.identifier
       }
       $http.post(baseURL + 'insertbeaconnote', beacon).success(function(res, req) {
@@ -55,7 +54,7 @@ angular.module('starter', ['ionic', 'starter.controllers'])
           }
         }
 
-     };
+     });
 
      var delegate = new cordova.plugins.locationManager.Delegate();
 
