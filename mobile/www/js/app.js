@@ -36,23 +36,12 @@ angular.module('starter', ['ionic', 'starter.controllers'])
       var beacon = {
         'beacon_uuid' : message.uuid,
         'beacon_proximity' : message.proximity,
-        'beacon_tx' : message.tx,
+        'beacon_rssi' : message.rssi,
         'beacon_accuracy' : message.accuracy,
         'user_identifier' : message.identifier
       }
       $http.post(baseURL + 'insertbeaconnote', beacon).success(function(res, req) {
-        if( res.errcode > 0 ){
-          if( 'ProximityFar' == message.proximity ){
-              navigator.notification.alert("Welcome to 7-16 Popety", function(buttonIndex) {}, "Popety", 'OK');
-              navigator.notification.beep(1);
-              window.localStorage.setItem("beconnotification1", false );
 
-          } else if( 'ProximityNear' == message.proximity || 'ProximityImmediate' == message.proximity ){
-              navigator.notification.alert("07-16 Unit is added into your favorite", function(buttonIndex) {}, "Popety", 'OK');
-              navigator.notification.beep(1);
-              window.localStorage.setItem("beconnotification2", false );
-          }
-        }
 
      });
 
