@@ -36,6 +36,8 @@ app.all('*', function(req, res, next) {
 
 var user = require('./api/user');
 app.use('/api/user', user);
+var activity = require('./api/activity');
+app.use('/api/activity', activity);
 
 
 
