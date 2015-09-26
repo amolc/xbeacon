@@ -18,7 +18,7 @@ router.get('/', function( req, res ) {
   activityCRUD.load({},function (err, val) {
     var resdata={
         records:val,
-        status:false,
+        status:true,
         message :'err'
       };
     res.jsonp(resdata);
