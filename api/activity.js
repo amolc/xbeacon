@@ -28,6 +28,7 @@ router.get('/', function( req, res ) {
 
 
 router.post('/new', function( req, res ) {
+  console.log( req.body );
   activityCRUD.crete({ 'beacon_uuid' : req.body.beacon_uuid, 'beacon_proximity' : req.body.beacon_proximity, 'beacon_rssi' : req.body.beacon_rssi, 'beacon_accuracy' : req.body.beacon_accuracy, 'user_identifier' : req.body.user_identifier },function (err, val) {
     var resdata = {
         records:val,
