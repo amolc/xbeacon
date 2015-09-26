@@ -22,11 +22,11 @@ angular.module('starter', ['ionic', 'starter.controllers'])
 
 
   if( window.cordova && cordova.plugins.locationManager ){
-    alert('5:27');
+
     var logToDom = function (message) {
       var e = document.createElement('label');
       e.innerText = message;
-      console.log( message );
+      console.log( message.identifier );
       var br = document.createElement('br');
       var br2 = document.createElement('br');
       document.getElementById("listbbbbbbb").appendChild(e);
@@ -38,13 +38,10 @@ angular.module('starter', ['ionic', 'starter.controllers'])
         'beacon_proximity' : message.proximity,
         'beacon_rssi' : message.rssi,
         'beacon_accuracy' : message.accuracy,
-        'user_identifier' : message.identifier
+        'identifier' : message.identifier
       }
-      $http.post(baseURL + 'insertbeaconnote', beacon).success(function(res, req) {
-
-
-     });
-
+        $http.post( baseURL + 'activity/new', beacon).success(function(res, req) { });
+      }
      var delegate = new cordova.plugins.locationManager.Delegate();
 
      delegate.didDetermineStateForRegion = function (pluginResult) {
