@@ -5,7 +5,7 @@ var currentdate = new Date();
 var time = currentdate.getTime();
 
 var connection = require('./database');
-var userCRUD = CRUD(connection, 'user');
+var activityCRUD = CRUD(connection, 'activity');
 
 // middleware specific to this router
 router.use(function timeLog(req, res, next) {
@@ -15,7 +15,7 @@ router.use(function timeLog(req, res, next) {
 
 
 router.get('/', function( req, res ) {
-    userCRUD.load(function (err, val) {
+    activityCRUD.load(function (err, val) {
     var resdata={
         records:val,
         status:false,
@@ -25,5 +25,6 @@ router.get('/', function( req, res ) {
     });
 
 });
+
 
 module.exports = router;

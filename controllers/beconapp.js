@@ -4,7 +4,7 @@
 // Set the main application name
 var xbeaconApp = 'beacon';
 
-var baseUrl = "http://node.fountaintechies.com:8001/api";
+var baseUrl = "http://node.fountaintechies.com:8001/api/";
 // Create the main application
 var xbeaconAppModule = angular.module( xbeaconApp , ['ui.router']);
 
@@ -27,6 +27,11 @@ xbeaconAppModule.config( function($urlRouterProvider, $stateProvider) {
         templateUrl:'templates/device_list.html',
         controller: 'deviceManager'
     })
+    .state('becon_activity_list',{
+            url:'/becon_activity_list',
+            templateUrl:'templates/becon_activity_list.html',
+            controller: 'activityController'
+        })
 
     $urlRouterProvider.otherwise('/appbecon_user_list');
 });
