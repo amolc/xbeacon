@@ -81,13 +81,8 @@ angular.module('starter', ['ionic', 'starter.controllers'])
      };
 
 
-     var uuid = 'FDA50693-A4E2-4FB1-AFCF-C6EB07647825';
-     var identifier = 'Doctor1';
-     var minor = 12544;
-     var major = 10001;
-
-     var beaconRegion = new cordova.plugins.locationManager.BeaconRegion(identifier, uuid, major, minor);
-
+     var beaconRegion = new cordova.plugins.locationManager.BeaconRegion('Doctor1', 'FDA50693-A4E2-4FB1-AFCF-C6EB07647825', 10001, 12544);
+     var beaconRegion2 = new cordova.plugins.locationManager.BeaconRegion('Doctor2', 'FDA50693-A4E2-4FB1-AFCF-C6EB07647825', 2000, 3000);
      cordova.plugins.locationManager.setDelegate(delegate);
 
      // required in iOS 8+
@@ -95,6 +90,9 @@ angular.module('starter', ['ionic', 'starter.controllers'])
      // or cordova.plugins.locationManager.requestAlwaysAuthorization()
 
      cordova.plugins.locationManager.startRangingBeaconsInRegion(beaconRegion)
+         .fail(console.error)
+         .done();
+     cordova.plugins.locationManager.startRangingBeaconsInRegion(beaconRegion2)
          .fail(console.error)
          .done();
 
