@@ -18,7 +18,7 @@ xbeaconAppModule.config( function($urlRouterProvider, $stateProvider) {
 
     .state('becon_user_list',{
         url:'/becon_user_list',
-        templateUrl:'templates/becon_user_list.html',
+        templateUrl:'templates/beacon_user_list.html',
         controller: 'deviceController'
     })
 
@@ -29,7 +29,7 @@ xbeaconAppModule.config( function($urlRouterProvider, $stateProvider) {
     })
     .state('becon_activity_list',{
             url:'/becon_activity_list',
-            templateUrl:'templates/becon_activity_list.html',
+            templateUrl:'templates/beacon_activity_list.html',
             controller: 'activityController'
         })
 
