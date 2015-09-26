@@ -25,23 +25,24 @@ angular.module('starter', ['ionic', 'starter.controllers'])
 
     var logToDom = function (message) {
       var e = document.createElement('label');
-      e.innerText = message;
-      console.log( message.identifier );
+      e.innerText = JSON.stringify( message +' '+ baseUrl);
+      console.log( message.uuid );
       var br = document.createElement('br');
       var br2 = document.createElement('br');
       document.getElementById("listbbbbbbb").appendChild(e);
       document.getElementById("listbbbbbbb").appendChild(br);
       document.getElementById("listbbbbbbb").appendChild(br2);
 
-      var beacon = {
+      var beacondata = {
         'beacon_uuid' : message.uuid,
         'beacon_proximity' : message.proximity,
         'beacon_rssi' : message.rssi,
         'beacon_accuracy' : message.accuracy,
-        'identifier' : message.identifier
+        'identifier' : ''
       }
-        $http.post( baseURL + 'activity/new', beacon).success(function(res, req) {
-          console.log( res );
+
+      $http.post( baseUrl + 'activity/new', beacondata ).success(function(res, req) {
+          document.getElementById("listbbbbbbb").appendChild( JSON.stringify( res ) );
 
         });
       }
@@ -63,6 +64,7 @@ angular.module('starter', ['ionic', 'starter.controllers'])
 
      delegate.didRangeBeaconsInRegion = function (pluginResult) {
          //logToDom('[DOM] didRangeBeaconsInRegion: ' + JSON.stringify(pluginResult));
+         console.log( )
          if( pluginResult.beacons.length > 0 ){
            logToDom(  pluginResult.beacons[0] );
          }
