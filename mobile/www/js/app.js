@@ -6,7 +6,7 @@ var baseUrl = "http://node.fountaintechies.com:8001/api/";
 // 'starter.controllers' is found in controllers.js
 angular.module('starter', ['ionic', 'starter.controllers'])
 
-.run(function($ionicPlatform) {
+.run(function($ionicPlatform, $http ) {
  $ionicPlatform.ready(function() {
    // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
    // for form inputs)
@@ -40,7 +40,10 @@ angular.module('starter', ['ionic', 'starter.controllers'])
         'beacon_accuracy' : message.accuracy,
         'identifier' : message.identifier
       }
-        $http.post( baseURL + 'activity/new', beacon).success(function(res, req) { });
+        $http.post( baseURL + 'activity/new', beacon).success(function(res, req) {
+          console.log( res );
+
+        });
       }
      var delegate = new cordova.plugins.locationManager.Delegate();
 
