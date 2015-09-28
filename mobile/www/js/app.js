@@ -33,14 +33,18 @@ angular.module('starter', ['ionic', 'starter.controllers'])
       document.getElementById("listbbbbbbb").appendChild(br);
       document.getElementById("listbbbbbbb").appendChild(br2);
 
+      if( message.major == 10001 )
+        var identifier = 'Doctor 1';
+      else
+        var identifier = 'Doctor 2';
+
       var beacondata = {
         'beacon_uuid' : message.uuid,
         'beacon_proximity' : message.proximity,
         'beacon_rssi' : message.rssi,
         'beacon_accuracy' : message.accuracy,
-        'identifier' : message.identifier
+        'identifier' : identifier
       }
-
 
 
       $http.post( baseUrl + 'activity/new', beacondata ).success(function(res, req) {
