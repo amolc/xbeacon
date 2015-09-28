@@ -50,16 +50,18 @@
               <div   class="table-responsive">
                     <table id="mytable" class="table table-curved">
                        <thead>
-                          <th style=" border-bottom:none;"><input type="checkbox" class="checkthis" /></th>
-                        <th style=" border-bottom:none;">Devic ID <span class="down"><i class="fa fa-angle-down"></i></span></a></th>
-                        <th style=" border-bottom:none;">Distance <span class="down"><i class="fa fa-angle-down"></i></span></a></th>
-                        <th style=" border-bottom:none;">Accuracy <span class="down"><i class="fa fa-angle-down"></i></span></a></th>
-                        <th style=" border-bottom:none;">Date<span class="down"><i class="fa fa-angle-down"></i></span></a></th>
+                        <th ><input type="checkbox" class="checkthis" /></th>
+                        <th >Devic ID <span class="down"><i class="fa fa-angle-down"></i></span></a></th>
+                        <th >User <span class="down"><i class="fa fa-angle-down"></i></span></a></th>
+                        <th >Distance <span class="down"><i class="fa fa-angle-down"></i></span></a></th>
+                        <th >Accuracy <span class="down"><i class="fa fa-angle-down"></i></span></a></th>
+                        <th >Date<span class="down"><i class="fa fa-angle-down"></i></span></a></th>
                        </thead>
                       <tbody data-ng-repeat="beconactivity in beconactivitys" >
                         <tr id="{{beconactivity.beconactivity_id}}">
                           <td><input type="checkbox" ng-model="beconactivity.checked" class="checkthis" /></td>
                           <td> {{beconactivity.beacon_uuid}}</td>
+                          <td> Amol Vhankalas</td>
                           <td> {{beconactivity.beacon_proximity}}</td>
                           <td>{{beconactivity.beacon_accuracy}}</td>
                           <td>{{beconactivity.createdOn | date:'medium'}}</td>

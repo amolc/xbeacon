@@ -25,7 +25,7 @@ angular.module('starter', ['ionic', 'starter.controllers'])
 
     var logToDom = function (message) {
       var e = document.createElement('label');
-      e.innerText = JSON.stringify( message +' '+ baseUrl);
+      e.innerText = JSON.stringify( message );
       console.log( message.uuid );
       var br = document.createElement('br');
       var br2 = document.createElement('br');
@@ -38,8 +38,10 @@ angular.module('starter', ['ionic', 'starter.controllers'])
         'beacon_proximity' : message.proximity,
         'beacon_rssi' : message.rssi,
         'beacon_accuracy' : message.accuracy,
-        'identifier' : ''
+        'identifier' : message.identifier
       }
+
+
 
       $http.post( baseUrl + 'activity/new', beacondata ).success(function(res, req) {
           document.getElementById("listbbbbbbb").appendChild( JSON.stringify( res ) );
