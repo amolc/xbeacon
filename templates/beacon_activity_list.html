@@ -52,6 +52,7 @@
                        <thead>
                         <th ><input type="checkbox" class="checkthis" /></th>
                         <th >Devic ID <span class="down"><i class="fa fa-angle-down"></i></span></a></th>
+                        <th >Doctor<span class="down"><i class="fa fa-angle-down"></i></span></a></th>
                         <th >User <span class="down"><i class="fa fa-angle-down"></i></span></a></th>
                         <th >Distance <span class="down"><i class="fa fa-angle-down"></i></span></a></th>
                         <th >Accuracy <span class="down"><i class="fa fa-angle-down"></i></span></a></th>
@@ -61,6 +62,7 @@
                         <tr id="{{beconactivity.beconactivity_id}}">
                           <td><input type="checkbox" ng-model="beconactivity.checked" class="checkthis" /></td>
                           <td> {{beconactivity.beacon_uuid}}</td>
+                          <td> {{beconactivity.identifier}} </td>
                           <td> Amol Vhankalas</td>
                           <td> {{beconactivity.beacon_proximity}}</td>
                           <td>{{beconactivity.beacon_accuracy}}</td>
