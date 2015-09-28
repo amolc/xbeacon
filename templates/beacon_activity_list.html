@@ -52,8 +52,8 @@
                        <thead>
                           <th style=" border-bottom:none;"><input type="checkbox" class="checkthis" /></th>
                         <th style=" border-bottom:none;">Devic ID <span class="down"><i class="fa fa-angle-down"></i></span></a></th>
-                        <th style=" border-bottom:none;">Email <span class="down"><i class="fa fa-angle-down"></i></span></a></th>
-                        <th style=" border-bottom:none;">Email <span class="down"><i class="fa fa-angle-down"></i></span></a></th>
+                        <th style=" border-bottom:none;">Distance <span class="down"><i class="fa fa-angle-down"></i></span></a></th>
+                        <th style=" border-bottom:none;">Accuracy <span class="down"><i class="fa fa-angle-down"></i></span></a></th>
                         <th style=" border-bottom:none;">Date<span class="down"><i class="fa fa-angle-down"></i></span></a></th>
                        </thead>
                       <tbody data-ng-repeat="beconactivity in beconactivitys" >
@@ -61,9 +61,8 @@
                           <td><input type="checkbox" ng-model="beconactivity.checked" class="checkthis" /></td>
                           <td> {{beconactivity.beacon_uuid}}</td>
                           <td> {{beconactivity.beacon_proximity}}</td>
-                          <td>{{beconactivity.beacon_rssi}}</td>
                           <td>{{beconactivity.beacon_accuracy}}</td>
-                          <td>{{beconactivity.user_identifier}}</td>
+                          <td>{{beconactivity.createdOn | date:'medium'}}</td>
                         </tr>
                       </tbody>
                     </table>
