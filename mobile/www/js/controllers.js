@@ -22,6 +22,8 @@ angular.module('starter.controllers', [])
     window.localStorage.removeItem('emailid');
     window.localStorage.removeItem('username');
     $state.go('app.login');
+    $state.reload();
+    $scope.emailid = null;
   };
   // Perform the login action when the user submits the login form
   $scope.doLogin = function(res, req) {
