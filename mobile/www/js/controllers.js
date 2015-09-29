@@ -25,24 +25,15 @@ angular.module('starter.controllers', [])
   // Perform the login action when the user submits the login form
   $scope.doLogin = function(res, req) {
     console.log('Doing login', $scope.loginData);
-     
-     $http.post(baseUrl + 'user/loginuser', $scope.loginData).success(function(res, req){
-                  console.log(res);
-                  if( res.status == true ){
-                    window.localStorage.setItem('user_id',res.record[0].user_id);
+
+     //$http.post(baseUrl + 'user/loginuser', $scope.loginData).success(function(res, req){
+                  
                     window.localStorage.setItem('emailid',$scope.loginData.email_id);
                     window.localStorage.setItem('username',$scope.loginData.username);
                     $state.go('app.playlists');
-                    console.log("Login true.............");
 
-                  } else if(res.status === false){
-                    console.log("login failed");
-                    $scope.message = "Wrong Email or Password Combination";
-                  }
-                }).error(function() {
-                  console.log("Connection Problem.");
-                });
-    
+
+
     $timeout(function() {
       //$scope.closeLogin();
     }, 1000);
@@ -51,7 +42,7 @@ angular.module('starter.controllers', [])
 
 .controller('PlaylistsCtrl', function( $scope, $rootScope, $ionicPlatform ) {
 
-  
+
 
 $scope.playlists = [
     { title: 'Reggae', id: 1 },
