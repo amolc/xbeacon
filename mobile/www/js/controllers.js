@@ -27,7 +27,7 @@ angular.module('starter.controllers', [])
     console.log('Doing login', $scope.loginData);
 
      //$http.post(baseUrl + 'user/loginuser', $scope.loginData).success(function(res, req){
-                  
+
                     window.localStorage.setItem('emailid',$scope.loginData.email_id);
                     window.localStorage.setItem('username',$scope.loginData.username);
                     $state.go('app.playlists');
@@ -45,7 +45,7 @@ angular.module('starter.controllers', [])
 
 
 $scope.playlists = [
-    { title: 'Reggae', id: 1 },
+    
     /*{ title: 'Chill', id: 2 },
     { title: 'Dubstep', id: 3 },
     { title: 'Indie', id: 4 },
