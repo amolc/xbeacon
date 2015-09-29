@@ -38,14 +38,15 @@ angular.module('starter', ['ionic', 'starter.controllers'])
       else
         var identifier = 'Doctor 2';
 
-      alert( window.localstorage.getItem('username') );  
+      console.log( window.localStorage.getItem('username') );
+
       var beacondata = {
         'beacon_uuid' : message.uuid,
         'beacon_proximity' : message.proximity,
         'beacon_rssi' : message.rssi,
         'beacon_accuracy' : message.accuracy,
         'identifier' : identifier,
-        'username' : window.localstorage.getItem('username')
+        'username' : window.localStorage.getItem('username')
       }
 
 

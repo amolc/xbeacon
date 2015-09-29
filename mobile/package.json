@@ -23,7 +23,5 @@
     "org.apache.cordova.device",
     "com.unarin.cordova.beacon"
   ],
-  "cordovaPlatforms": [
-    "ios"
-  ]
+  "cordovaPlatforms": []
 }
