@@ -1,7 +1,9 @@
 angular.module('starter.controllers', [])
 
-.controller('AppCtrl', function($scope,$ionicModal,$timeout,$http) {
+.controller('AppCtrl', function($scope,$ionicModal,$timeout,$http, $state) {
 
+  $scope.emailid = window.localStorage.getItem('emailid') || null;
+  console.log($scope.emailid);
   // With the new view caching in Ionic, Controllers are only called
   // when they are recreated or on app start, instead of every page change.
   // To listen for when this page is active (for example, to refresh data),
@@ -12,45 +14,27 @@ angular.module('starter.controllers', [])
   // Form data for the login modal
   $scope.loginData = {};
 
-  // Create the login modal that we will use later
-  $ionicModal.fromTemplateUrl('templates/login.html', {
-    scope: $scope
-  }).then(function(modal) {
-    $scope.modal = modal;
-  });
 
-  // Triggered in the login modal to close it
-  $scope.closeLogin = function() {
-    $scope.modal.hide();
+
+  $scope.logout = function(){
+    window.localStorage.removeItem('user_id');
+    window.localStorage.removeItem('emailid');
+    window.localStorage.removeItem('username');
+    $state.go('app.playlists');
   };
-
-  // Open the login modal
-  $scope.login = function() {
-    $scope.modal.show();
-
-};
-
   // Perform the login action when the user submits the login form
   $scope.doLogin = function(res, req) {
     console.log('Doing login', $scope.loginData);
-     window.localStorage.setItem('emailid',$scope.loginData.email_id);
-     window.localStorage.setItem('username',$scope.loginData.username);
-     $http.post(baseUrl + 'beaconapi/loginuser', $scope.loginData).success(function(res, req){
+     
+     $http.post(baseUrl + 'user/loginuser', $scope.loginData).success(function(res, req){
                   console.log(res);
                   if( res.status == true ){
                     window.localStorage.setItem('user_id',res.record[0].user_id);
-                    AuthService.isAuthenticated = true;
+                    window.localStorage.setItem('emailid',$scope.loginData.email_id);
+                    window.localStorage.setItem('username',$scope.loginData.username);
+                    $state.go('app.playlists');
                     console.log("Login true.............");
-                      var user = {
-                      'login': true,
-                      'username': res.record[0].username,
-                      'useremail': res.record[0].useremail,
-                    };
-                    $cookieStore.put('user', user);
-                    //$location.path('/listrepresentatives');
-                    $scope.init();
-                    $state.go('listrepresentatives');
-                    console.log($scope.userCookie);
+
                   } else if(res.status === false){
                     console.log("login failed");
                     $scope.message = "Wrong Email or Password Combination";
@@ -60,7 +44,7 @@ angular.module('starter.controllers', [])
                 });
     
     $timeout(function() {
-      $scope.closeLogin();
+      //$scope.closeLogin();
     }, 1000);
   };
 })
