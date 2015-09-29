@@ -17,10 +17,13 @@ angular.module('starter.controllers', [])
 
 
   $scope.logout = function(){
+    console.log("In logout");
     window.localStorage.removeItem('user_id');
     window.localStorage.removeItem('emailid');
     window.localStorage.removeItem('username');
     $state.go('app.login');
+    $state.reload();
+    $scope.emailid = null;
   };
   // Perform the login action when the user submits the login form
   $scope.doLogin = function(res, req) {
@@ -30,7 +33,9 @@ angular.module('starter.controllers', [])
 
                     window.localStorage.setItem('emailid',$scope.loginData.email_id);
                     window.localStorage.setItem('username',$scope.loginData.username);
+                    $state.reload();
                     $state.go('app.playlists');
+
 
 
 
