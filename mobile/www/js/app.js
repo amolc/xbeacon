@@ -30,9 +30,9 @@ angular.module('starter', ['ionic', 'starter.controllers'])
         console.log( message.uuid );
         var br = document.createElement('br');
         var br2 = document.createElement('br');
-        document.getElementById("listbbbbbbb").appendChild(e);
-        document.getElementById("listbbbbbbb").appendChild(br);
-        document.getElementById("listbbbbbbb").appendChild(br2);
+        document.getElementById("listbbbbbbb").innerHTML(e);
+        document.getElementById("listbbbbbbb").innerHTML(br);
+        document.getElementById("listbbbbbbb").innerHTML(br2);
 
         if( message.major == 10001 )
           var identifier = 'Doctor 1';
