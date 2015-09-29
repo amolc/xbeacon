@@ -24,36 +24,38 @@ angular.module('starter', ['ionic', 'starter.controllers'])
   if( window.cordova && cordova.plugins.locationManager ){
 
     var logToDom = function (message) {
-      var e = document.createElement('label');
-      e.innerText = JSON.stringify( message );
-      console.log( message.uuid );
-      var br = document.createElement('br');
-      var br2 = document.createElement('br');
-      document.getElementById("listbbbbbbb").appendChild(e);
-      document.getElementById("listbbbbbbb").appendChild(br);
-      document.getElementById("listbbbbbbb").appendChild(br2);
+      if( window.localStorage.getItem('username') ){
+        var e = document.createElement('label');
+        e.innerText = JSON.stringify( message );
+        console.log( message.uuid );
+        var br = document.createElement('br');
+        var br2 = document.createElement('br');
+        document.getElementById("listbbbbbbb").appendChild(e);
+        document.getElementById("listbbbbbbb").appendChild(br);
+        document.getElementById("listbbbbbbb").appendChild(br2);
 
-      if( message.major == 10001 )
-        var identifier = 'Doctor 1';
-      else
-        var identifier = 'Doctor 2';
-
-      console.log( window.localStorage.getItem('username') );
-
-      var beacondata = {
-        'beacon_uuid' : message.uuid,
-        'beacon_proximity' : message.proximity,
-        'beacon_rssi' : message.rssi,
-        'beacon_accuracy' : message.accuracy,
-        'identifier' : identifier,
-        'username' : window.localStorage.getItem('username')
-      }
+        if( message.major == 10001 )
+          var identifier = 'Doctor 1';
+        else
+          var identifier = 'Doctor 2';
 
 
-      $http.post( baseUrl + 'activity/new', beacondata ).success(function(res, req) {
-          document.getElementById("listbbbbbbb").appendChild( JSON.stringify( res ) );
 
-        });
+        var beacondata = {
+          'beacon_uuid' : message.uuid,
+          'beacon_proximity' : message.proximity,
+          'beacon_rssi' : message.rssi,
+          'beacon_accuracy' : message.accuracy,
+          'identifier' : identifier,
+          'username' : window.localStorage.getItem('username')
+        }
+
+
+        $http.post( baseUrl + 'activity/new', beacondata ).success(function(res, req) {
+            document.getElementById("listbbbbbbb").appendChild( JSON.stringify( res ) );
+
+          });
+        }
       }
      var delegate = new cordova.plugins.locationManager.Delegate();
 
