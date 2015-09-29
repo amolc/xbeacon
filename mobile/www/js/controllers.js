@@ -27,7 +27,7 @@ angular.module('starter.controllers', [])
   // Open the login modal
   $scope.login = function() {
     $scope.modal.show();
- 
+
 };
 
   // Perform the login action when the user submits the login form
@@ -65,8 +65,11 @@ angular.module('starter.controllers', [])
   };
 })
 
-.controller('PlaylistsCtrl', function($scope) {
-  $scope.playlists = [
+.controller('PlaylistsCtrl', function( $scope, $rootScope, $ionicPlatform ) {
+
+  
+
+$scope.playlists = [
     { title: 'Reggae', id: 1 },
     /*{ title: 'Chill', id: 2 },
     { title: 'Dubstep', id: 3 },

@@ -21,7 +21,7 @@ angular.module('starter', ['ionic', 'starter.controllers'])
    }
 
 
-  if( window.cordova && cordova.plugins.locationManager ){
+  /*if( window.cordova && cordova.plugins.locationManager ){
 
     var logToDom = function (message) {
       var e = document.createElement('label');
@@ -92,13 +92,8 @@ angular.module('starter', ['ionic', 'starter.controllers'])
          .fail(console.error)
          .done();
 
+   }*/
 
-
-
-
-
-
-   }
  });
 })
 
