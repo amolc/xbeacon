@@ -20,7 +20,7 @@ angular.module('starter.controllers', [])
     window.localStorage.removeItem('user_id');
     window.localStorage.removeItem('emailid');
     window.localStorage.removeItem('username');
-    $state.go('app.playlists');
+    $state.go('app.login');
   };
   // Perform the login action when the user submits the login form
   $scope.doLogin = function(res, req) {
