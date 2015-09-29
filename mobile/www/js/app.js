@@ -43,7 +43,8 @@ angular.module('starter', ['ionic', 'starter.controllers'])
         'beacon_proximity' : message.proximity,
         'beacon_rssi' : message.rssi,
         'beacon_accuracy' : message.accuracy,
-        'identifier' : identifier
+        'identifier' : identifier,
+        'username' : window.localstorage.getItem('username')
       }
 
 
