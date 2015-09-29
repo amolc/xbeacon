@@ -33,32 +33,32 @@ angular.module('starter.controllers', [])
   // Perform the login action when the user submits the login form
   $scope.doLogin = function(res, req) {
     console.log('Doing login', $scope.loginData);
-     window.localStorage.setItem('emailid',$scope.loginData.emailid);
-     // $http.post(baseUrl + 'beaconapi/loginuser', $scope.loginData).success(function(res, req){
-     //              console.log(res);
-     //              if( res.status == true ){
-     //                window.localStorage.setItem('user_id',res.record[0].user_id);
-     //                AuthService.isAuthenticated = true;
-     //                console.log("Login true.............");
-     //                  var user = {
-     //                  'login': true,
-     //                  'username': res.record[0].username,
-     //                  'useremail': res.record[0].useremail,
-     //                };
-     //                $cookieStore.put('user', user);
-     //                //$location.path('/listrepresentatives');
-     //                $scope.init();
-     //                $state.go('listrepresentatives');
-     //                console.log($scope.userCookie);
-     //              } else if(res.status === false){
-     //                console.log("login failed");
-     //                $scope.message = "Wrong Email or Password Combination";
-     //              }
-     //            }).error(function() {
-     //              console.log("Connection Problem.");
-     //            });
-    // Simulate a login delay. Remove this and replace with your login
-    // code if using a login system
+     window.localStorage.setItem('emailid',$scope.loginData.email_id);
+     window.localStorage.setItem('username',$scope.loginData.username);
+     $http.post(baseUrl + 'beaconapi/loginuser', $scope.loginData).success(function(res, req){
+                  console.log(res);
+                  if( res.status == true ){
+                    window.localStorage.setItem('user_id',res.record[0].user_id);
+                    AuthService.isAuthenticated = true;
+                    console.log("Login true.............");
+                      var user = {
+                      'login': true,
+                      'username': res.record[0].username,
+                      'useremail': res.record[0].useremail,
+                    };
+                    $cookieStore.put('user', user);
+                    //$location.path('/listrepresentatives');
+                    $scope.init();
+                    $state.go('listrepresentatives');
+                    console.log($scope.userCookie);
+                  } else if(res.status === false){
+                    console.log("login failed");
+                    $scope.message = "Wrong Email or Password Combination";
+                  }
+                }).error(function() {
+                  console.log("Connection Problem.");
+                });
+    
     $timeout(function() {
       $scope.closeLogin();
     }, 1000);
